@@ -1,163 +1,109 @@
 function initialize()
 {
-    add1 = document.getElementById("add1");
-    add5 = document.getElementById("add5");
-    add10 = document.getElementById("add10");
-    add25 = document.getElementById("add25");
-    sub1 = document.getElementById("sub1");
-    sub5 = document.getElementById("sub5");
-    sub10 = document.getElementById("sub10");
-    sub25 = document.getElementById("sub25");
-    commit = document.getElementById("commit");
-    reset = document.getElementById("reset");
-    guess = 5;
+    cGuess = document.getElementById("myGuess");
     currentGuess = 50;
-    numLog = {};
-    responseLog = {};
-    randNum = Math.random() * 100 + 1;
-    responseLog.push("Start");
-    numLog.push(currentGuess);
+
+    guesses = 5;
+    guessesLeft = document.getElementById("guesses");
+
+    num = Math.floor(Math.random() * 100) + 1;
+
+    responses = document.getElementById("responseLog");
+    res = "";
+
+    numbers = document.getElementById("numberLog");
+    nums = "50";
+
     display();
 }
 
 function play()
 {
-    if (guess != 0)
+    if (guesses != 0)
         {
-            if (Math.abs(guess - num == 5))
+            if (currentGuess == num)
             {
-                responseLog.push("Very Hot");
+                nums += " " + currentGuess;
+                res += " You Guessed The Correct Number";
             }
-            else if (Math.abs(guess - num) > 5 && Math.abs(guess - num) < 9 )
+            else if (Math.abs(currentGuess - num) <= 5)
             {
-                responseLog.push("Hot");
-                guess--;
+                res +=" | Very Hot";
+                nums += " " + currentGuess;
             }
-            else if (Math.abs(guess - num) > 8 && Math.abs(guess - num) < 16 )
+            else if (Math.abs(currentGuess - num) > 5 && Math.abs(currentGuess - num) < 9 )
             {
-                responseLog.push("Very Warm");
-                guess--;
+                res += " | Hot";
+                nums += " " + currentGuess;
+                guesses--;
             }
-            else if (Math.abs(guess - num) > 15 && Math.abs(guess - num) < 21 )
+            else if (Math.abs(currentGuess - num) > 8 && Math.abs(currentGuess - num) < 16 )
             {
-                responseLog.push("Warm");
-                guess--;
+                res += " | Very Warm";
+                nums += " " + currentGuess;
+                guesses--;
             }
-            else if (Math.abs(guess - num) > 20 && Math.abs(guess - num) < 31 )
+            else if (Math.abs(currentGuess - num) > 15 && Math.abs(currentGuess - num) < 21 )
             {
-                responseLog.push("Cool");
-                guess--;
+                res += " | Warm";
+                nums += " " + currentGuess;
+                guesses--;
             }
-            else if (Math.abs(guess - num) > 30 && Math.abs(guess - num) < 41 )
+            else if (Math.abs(currentGuess - num) > 20 && Math.abs(currentGuess- num) < 31 )
             {
-                responseLog.push("Very Cool");
-                guess--;
+                res += " | Cool";
+                nums += " " + currentGuess;
+                guesses--;
             }
-            else if (Math.abs(guess - num) > 40 && Math.abs(guess - num) < 56 )
+            else if (Math.abs(currentGuess - num) > 30 && Math.abs(currentGuess - num) < 41 )
             {
-                responseLog.push("Cold");
-                guess--;
+                res += " | Very Cool";
+                nums += " " + currentGuess;
+                guesses--;
             }
-            else if (Math.abs(guess - num) > 55)
+            else if (Math.abs(currentGuess - num) > 40 && Math.abs(currentGuess - num) < 56 )
             {
-                responseLog.push("Very Cold");
-                guess--;
+                res +=" | Cold";
+                nums += " " + currentGuess;
+                guesses--;
             }
-            else if (currentGuess == randNum)
+            else if (Math.abs(currentGuess - num) > 55)
             {
-                responseLog.push("You Guessed The Correct Number");
-                guess--;
+                res += " | Very Cold";
+                nums += " " + currentGuess;
+                guesses--;
             }
-        }
-        else
-        {
-            responseLog.push("Game Over")
         }
     display();
 }
 
 function display()
 {
-    document.getElementById("numberLog").innerHTML = numLog;
-    numLog.array.forEach(element => {
-        let li = document.createElement("li");
-        li.innerText = element;
-        document.getElementById("numberLog").appendChild(li);
-    });
-
-    document.getElementById("response").innerHTML = responseLog;
-    responseLog.array.forEach(element => {
-        let li = document.createElement("li");
-        li.innerText = element;
-        document.getElementById("response").appendChild(li);
-    });
-    document.getElementById("myGuess").innerHTML = currentGuess;
-    document.getElementById("guesses").innerHTML = guess;
+    cGuess.innerHTML = currentGuess;
+    guessesLeft.innerHTML = guesses;
+    responses.innerHTML = res;
+    numbers.innerHTML = nums;
+    if (guesses == 0)
+    {
+        res += " | Game Over";
+    }
 }
 
-function add1()
+function increment(num)
 {
-    if (currentGuess++ < 101)
+    if (num < 0)
     {
-        currentGuess++;
+        if ((currentGuess + num) > 0)
+        {
+            currentGuess += num;
+        }
     }
-    display();
-}
-
-function add5()
-{
-    if (currentGuess+= 5 < 101)
+    else if (num > 0)
     {
-        currentGuess+= 5;
-    }
-    display();
-}
-function add10()
-{
-    if (currentGuess+= 10 < 101)
-    {
-        currentGuess+=10;
-    }
-    display();
-}
-function add25()
-{
-    if (currentGuess+= 25 < 101)
-    {
-        currentGuess+= 25;
-    }
-    display();
-}
-
-function subtract1()
-{
-    if (currentGuess-- > 0)
-    {
-        currentGuess--;
-    }
-    display();
-}
-function subtract5()
-{
-    if (currentGuess-= 5 > 0)
-    {
-        currentGuess-= 5;
-    }
-    display();
-}
-function subtract10()
-{
-    if (currentGuess-=10 > 0)
-    {
-        currentGuess-= 10;
-    }
-    display();
-}
-function subtract25()
-{
-    if (currentGuess-=25 > 0)
-    {
-        currentGuess-= 25;
+        if((currentGuess + num) < 101)
+        {
+            currentGuess += num;
+        }
     }
     display();
 }

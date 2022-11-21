@@ -7,34 +7,31 @@
     <title>Hot And Cold</title>
     <script src="script.js"></script>
 </head>
-<body onload="initialize()">
-    <p id="myGuess"></p>
-    <p id="guesses"></p>
-    <div class="log" style="display: flex; flex-direction: row;">
-        <div class="responses">
-            <h2>Responses Log</h2>
-            <ul id="response"></ul>
-        </div>
-        <div class="number">
-            <h2>Number Log</h2>
-            <p id="numberLog"></p>
-        </div>
+<body onload="initialize();">
+    <h2>Response Log: <span id="responseLog"></span></h2>
+
+    <h2>Number Log: <span id="numberLog"></span></h2>
+
+    <p>My Guess: <span id="myGuess"></span></p>
+
+    <p>Guesses Left: <span id="guesses"></span></p>
+    
+
+    <button onclick="play();">Commit</button>
+    <button onclick="initialize();">Reset</button>
+
+    <div class="add">
+        <button id="add1" onclick="increment(1)">Add 1</button>
+        <button id="add5" onclick="increment(5)">Add 5</button>
+        <button id="add10" onclick="increment(10)">Add 10</button>
+        <button id="add25" onclick="increment(25)">Add 25</button>
     </div>
-    <div class="addButton">
-        <button id="add1" onclick="add1()">Add 1</button>
-        <button id="add5" onclick="add5()">Add 5</button>
-        <button id="add10" onclick="add10()">Add 10</button>
-        <button id="add25" onclick="add25()">Add 25</button>
-    </div>
-    <div class="subtractButton">
-        <button id="sub1" onclick="subtract1()">Subtract 1</button>
-        <button id="sub5" onclick="subtract5()">Subtract 5</button>
-        <button id="sub10" onclick="subtract10()">Subtract 10</button>
-        <button id="sub25" onclick="subtract25()">Subtract 25</button>
-    </div>
-    <div class="functional">
-        <button id="commit" onclick="play()">Commit</button>
-        <button id="reset" onclick="initialize()">Reset</button>
+
+    <div class="subtract">
+        <button id="sub1" onclick="increment(-1)">Subtract 1</button>
+        <button id="sub5" onclick="increment(-5)">Subtract 5</button>
+        <button id="sub10" onclick="increment(-10)">Subtract 10</button>
+        <button id="sub25" onclick="increment(-25)">Subtract 25</button>
     </div>
 </body>
 </html>
