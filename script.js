@@ -1,3 +1,4 @@
+/*Kaden Kwan Period 7-8 11/21/22 Hot And Cold*/
 function initialize()
 {
     cGuess = document.getElementById("myGuess");
