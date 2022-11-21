@@ -23,54 +23,54 @@ function play()
         {
             if (currentGuess == num)
             {
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 res += " You Guessed The Correct Number";
             }
             else if (Math.abs(currentGuess - num) <= 5)
             {
                 res +=" | Very Hot";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
             }
             else if (Math.abs(currentGuess - num) > 5 && Math.abs(currentGuess - num) < 9 )
             {
                 res += " | Hot";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
             else if (Math.abs(currentGuess - num) > 8 && Math.abs(currentGuess - num) < 16 )
             {
                 res += " | Very Warm";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
             else if (Math.abs(currentGuess - num) > 15 && Math.abs(currentGuess - num) < 21 )
             {
                 res += " | Warm";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
             else if (Math.abs(currentGuess - num) > 20 && Math.abs(currentGuess- num) < 31 )
             {
                 res += " | Cool";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
             else if (Math.abs(currentGuess - num) > 30 && Math.abs(currentGuess - num) < 41 )
             {
                 res += " | Very Cool";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
             else if (Math.abs(currentGuess - num) > 40 && Math.abs(currentGuess - num) < 56 )
             {
                 res +=" | Cold";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
             else if (Math.abs(currentGuess - num) > 55)
             {
                 res += " | Very Cold";
-                nums += " " + currentGuess;
+                nums += " | " + currentGuess;
                 guesses--;
             }
         }
